@@ -6,9 +6,37 @@ import java.util.List;
 import modele.Mouton;
 
 public class MoutonDAO {
-
 	
 	public static String URL_LISTE_MOUTONS = "http://localhost/service.bergerie/mouton/liste/";
+	public static String URL_RAPPORTER_MOUTON = "http://localhost/bergerie.service/mouton/?mouton=";
+	
+	public Mouton rapporterMouton(int numero)
+	{		
+		
+		// Récupérer le xml
+		String xml = ServiceWeb.consommerService(URL_RAPPORTER_MOUTON + numero);
+		
+		// Interprétation du xml - construire les modeles
+		if(xml != null)
+		{
+			/*
+			Mouton mouton = new Mouton(nom,description);
+			Document document = ServiceWeb.parserXML(xml);
+			if(document == null) return null;
+			Element element = document.getDocumentElement();
+			String id = ServiceWeb.lireBalise(element, "id");
+			String nom = ServiceWeb.lireBalise(element,"nom");
+			String description = element.getElementsByTagName("description").item(0).getTextContent();
+			
+			System.out.println("Variables trouvees " + id + " " + nom + " " + description);
+			
+			mouton.setId(Integer.parseInt(id)); // TODO Ajouter robustesse
+			return mouton;
+			*/
+		}		
+		return null;
+	}	
+	
 	public List<Mouton> listerMoutons()
 	{
 	
