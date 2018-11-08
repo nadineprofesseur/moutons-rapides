@@ -1,7 +1,10 @@
 package vue;
 import java.util.List;
 
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
@@ -23,12 +26,19 @@ public class VueListeMouton extends Scene {
 		grilleMoutons.add(new Label("Nom"), 0, 0);
 		grilleMoutons.add(new Label("Naissance"), 1, 0);
 		
-		int position = 1;
+		int numero = 1;
 		for(Mouton mouton : listeMoutons)
 		{
-			grilleMoutons.add(new Label(mouton.getNom()), 0, position);
-			grilleMoutons.add(new Label(mouton.getNaissance()), 1, position);
-			position++;
+			Button actionVoirMouton = new Button("Voir");
+			actionVoirMouton.setOnAction(new EventHandler<ActionEvent>() {
+				@Override
+				public void handle(ActionEvent a) {
+					//controleur.notifierNaviguerVoirMouton(mouton.getId()); // TODO ameliorer ceci pour respecter architecture cible = pas de parametre dans les notifications au controleur
+				}});
+			grilleMoutons.add(new Label(mouton.getNom()), 0, numero);
+			grilleMoutons.add(new Label(mouton.getNaissance()), 1, numero);
+			grilleMoutons.add(actionVoirMouton, 2, numero);
+			numero++;
 		}
 	}
 	
