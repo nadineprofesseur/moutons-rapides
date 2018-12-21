@@ -3,6 +3,7 @@ package controleur;
 import java.util.ArrayList;
 import java.util.List;
 
+import donnee.MoutonDAO;
 import modele.Mouton;
 import vue.NavigateurDesVues;
 import vue.VueListeMouton;
@@ -13,10 +14,12 @@ public class ControleurMouton {
 	private VueMouton vueMouton = null;
 	private VueListeMouton vueListeMouton = null;
 		
+	private MoutonDAO moutonDAO = null;
+	
 	private NavigateurDesVues navigateur = null;
 	private ControleurMouton()
 	{
-		
+		this.moutonDAO = new MoutonDAO();
 	}
 	
 	private static ControleurMouton instance = null; // null est important
